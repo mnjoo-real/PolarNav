@@ -67,7 +67,7 @@ const MetricsPanel = ({ mode, withResult, withoutResult }: MetricsPanelProps) =>
     const innerHeight = height - margin.top - margin.bottom
 
     const allPoints = series.flatMap((line) => line.data)
-    const maxY = d3.max(allPoints, (d) => d.value) ?? 1
+    const maxY = d3.max(allPoints, (d: { value: number }) => d.value) ?? 1
 
     const xScale = d3
       .scaleLinear()
@@ -90,7 +90,7 @@ const MetricsPanel = ({ mode, withResult, withoutResult }: MetricsPanelProps) =>
           .axisBottom(xScale)
           .ticks(5)
           .tickSizeOuter(0)
-          .tickFormat((value) => `${value}s`),
+          .tickFormat((value) => `${value}s`)
       )
       .attr('transform', `translate(0,${innerHeight})`)
       .selectAll('text')
